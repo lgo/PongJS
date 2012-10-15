@@ -6,13 +6,14 @@ var ctx;
 var W = window.innerWidth - 100;
 var H = window.innerHeight - 100;
 var v = W / 100;
+var ballv = H*W/250000;
 var ball = {};
 var paddles = [2];
 var p1 = 0;
 var p2 = 0;
 var key = [0,0,0,0];
 ball = {
-	x: W/2, y: H/2, r: 5, c: "white", vx: -4, vy: 8,
+	x: W/2, y: H/2, r: 5, c: "white", vx: -1 * ballv, vy: 2 * ballv,
 	draw: function() {
 		ctx.beginPath();
 		ctx.fillStyle = this.c;
@@ -22,12 +23,12 @@ ball = {
 	reset: function(p) {
 		this.x = W/2;
 		this.y = H/2
-		this.vx = (Math.random > .5) ? 4 : -4;
-		if (p) {
-			this.vy = 8;
+		this.vx = (Math.random > .5) ? ballv : -1 * ballv;
+		if (!p) {
+			this.vy = 2 * ballv;
 		}
 		else {
-			this.vy = -8;
+			this.vy = -2 * ballv;
 		}
 	}
 		
